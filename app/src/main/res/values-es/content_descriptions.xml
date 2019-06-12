@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movie_cover">Portada de película</string>
+    <string name="black_circle">Circulo negro</string>
+    <string name="movie_backdrop_image">Imagen de fondo de la película</string>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">The Movie DB</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Más valorados</string>
+    <string name="upcoming">Próximo</string>
+    <string name="genres">Géneros</string>
+    <string name="videos">Vídeos</string>
+    <string name="search">Buscar</string>
+    <string name="search_movies">Buscar Películas</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movie_cover">Movie cover</string>
+    <string name="black_circle">Black circle</string>
+    <string name="movie_backdrop_image">Movie backdrop image</string>
+</resources>
