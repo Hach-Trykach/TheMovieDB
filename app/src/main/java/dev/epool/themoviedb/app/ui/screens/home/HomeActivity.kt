@@ -33,7 +33,9 @@ class HomeActivity : TMDBaseActivity<HomeActivityArgs>() {
             true
         }
         bottomNavigation.fixTextCuttingOff()
-        handleNavigation(R.id.navigation_popular)
+        if (savedInstanceState == null) {
+            handleNavigation(R.id.navigation_popular)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

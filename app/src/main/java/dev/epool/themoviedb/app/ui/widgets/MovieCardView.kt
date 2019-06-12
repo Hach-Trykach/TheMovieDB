@@ -19,7 +19,7 @@ class MovieCardView @JvmOverloads constructor(
     var movie: UiMovie? = null
         @SuppressLint("SetTextI18n")
         set(value) {
-            value?.getPosterUrl()?.let { moviePosterImageView.loadUrl(it) }
+            moviePosterImageView.loadUrl(value?.getPosterUrl())
             val voteAveragePercentage = value?.voteAverage?.let { (it * 10.0).toInt() }
             movieVoteAverageProgressBar.progress = voteAveragePercentage ?: 0
             movieVoteAverageTextView.text = voteAveragePercentage?.let { "$it%" }

@@ -37,9 +37,7 @@ class MovieDetailsActivity : TMDBaseActivity<MovieDetailsActivityArgs>() {
             }
             collapsingToolbarLayout.setTitleTextColor(Color.WHITE)
 
-            movie.getBackdropUrl(ApiMovieHelper.ImageSize.W500)?.let {
-                movieBackdropImageView.loadUrl(it)
-            }
+            movieBackdropImageView.loadUrl(movie.getBackdropUrl(ApiMovieHelper.ImageSize.W500))
 
             movieCardView.movie = movie
 

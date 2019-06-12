@@ -26,7 +26,8 @@ sealed class MovieDetailsViewState {
     data class MovieDetails(private val movieDetails: UiMovieDetails) : MovieDetailsViewState() {
 
         override fun render(activity: MovieDetailsActivity) = with(activity) {
-            movieDetails.homepage?.let { homepageUrl ->
+            val homepageUrl = movieDetails.homepage
+            if (homepageUrl?.isNotEmpty() == true) {
                 with(videoFloatingActionButton) {
                     show()
                     setOnClickListener { openUrl(homepageUrl) }

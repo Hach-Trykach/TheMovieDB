@@ -72,8 +72,8 @@ inline fun <reified T : ViewModel> Fragment.viewModel(): T = ViewModelProviders.
 
 //region View Extensions
 
-fun ImageView.loadUrl(url: String) =
-    Picasso.get().load(url).error(R.mipmap.ic_launcher).into(this)
+fun ImageView.loadUrl(url: String?) =
+    Picasso.get().load(url ?: "INVALID_URL").error(R.mipmap.ic_launcher).into(this)
 
 fun CollapsingToolbarLayout.setTitleTextColor(@ColorInt textColor: Int) = with(textColor) {
     setCollapsedTitleTextColor(this)
