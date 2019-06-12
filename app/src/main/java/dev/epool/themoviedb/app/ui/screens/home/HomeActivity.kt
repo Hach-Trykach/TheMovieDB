@@ -16,6 +16,10 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : TMDBaseActivity<HomeActivityArgs>() {
 
+    companion object {
+        private const val FRAGMENT_TAG_KEY = "TAG"
+    }
+
     private val pages = mapOf(
         R.id.navigation_popular to { MoviesFragmentArgs(DbMovie.Category.POPULAR).newInstance() },
         R.id.navigation_top_rated to { MoviesFragmentArgs(DbMovie.Category.TOP_RATED).newInstance() },
@@ -23,6 +27,7 @@ class HomeActivity : TMDBaseActivity<HomeActivityArgs>() {
         R.id.navigation_search to { SearchMoviesFragmentArgs().newInstance() }
     )
     private var lastShownFragment: Fragment? = null
+    private var lastShownFragmentTag: String? = null
 
     override fun layoutId() = R.layout.activity_home
 
@@ -35,7 +40,24 @@ class HomeActivity : TMDBaseActivity<HomeActivityArgs>() {
         bottomNavigation.fixTextCuttingOff()
         if (savedInstanceState == null) {
             handleNavigation(R.id.navigation_popular)
+        } else {
+            lastShownFragmentTag = savedInstanceState.getString(FRAGMENT_TAG_KEY)
+            lastShownFragmentTag?.let { hideFragmentsExcept(it) }
         }
+    }
+
+    private fun hideFragmentsExcept(tag: String) {
+        lastShownFragment = supportFragmentManager.findFragmentByTag(tag)
+        lastShownFragment?.let { currentFragment ->
+            supportFragmentManager.fragments
+                .filter { currentFragment != it }
+                .forEach { supportFragmentManager.transaction { hide(it) } }
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        outState?.putString(FRAGMENT_TAG_KEY, lastShownFragmentTag)
+        super.onSaveInstanceState(outState)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -58,6 +80,7 @@ class HomeActivity : TMDBaseActivity<HomeActivityArgs>() {
             lastShownFragment?.let {
                 if (it is CustomLifeCycleListener) it.shown()
             }
+            lastShownFragmentTag = tag
         }
     }
 
