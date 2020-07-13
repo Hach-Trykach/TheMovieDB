@@ -10,7 +10,6 @@ class TheMovieDbApp : Application() {
     companion object {
 
         fun from(context: Context) = context.applicationContext as TheMovieDbApp
-
     }
 
     lateinit var viewModelProviderFactory: TMDViewModelProviderFactory
@@ -20,5 +19,4 @@ class TheMovieDbApp : Application() {
         viewModelProviderFactory = TMDViewModelProviderFactory(this)
         Picasso.get().setIndicatorsEnabled(BuildConfig.DEBUG)
     }
-
 }

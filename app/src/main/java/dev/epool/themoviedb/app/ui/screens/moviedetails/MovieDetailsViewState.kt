@@ -9,7 +9,6 @@ import dev.epool.themoviedb.app.ui.models.UiVideo
 import kotlinx.android.synthetic.main.activity_movie_details.*
 import java.net.UnknownHostException
 
-
 sealed class MovieDetailsViewState {
 
     abstract fun render(activity: MovieDetailsActivity)
@@ -20,7 +19,6 @@ sealed class MovieDetailsViewState {
             videosViewGroup.isVisible = videos.isNotEmpty()
             adapter.addVideos(videos)
         }
-
     }
 
     data class MovieDetails(private val movieDetails: UiMovieDetails) : MovieDetailsViewState() {
@@ -36,7 +34,6 @@ sealed class MovieDetailsViewState {
             genresViewGroup.isVisible = movieDetails.genres.isNotEmpty()
             genresChipGroup.addChipsWithText(movieDetails.genres.map { it.name })
         }
-
     }
 
     data class Error(private val throwable: Throwable) : MovieDetailsViewState() {
@@ -46,7 +43,5 @@ sealed class MovieDetailsViewState {
                 Toast.makeText(this, throwable.message, Toast.LENGTH_LONG).show()
             }
         }
-
     }
-
 }

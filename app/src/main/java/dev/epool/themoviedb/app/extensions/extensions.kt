@@ -42,7 +42,6 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 //region Activity Extensions
 
 fun <T : Parcelable> AppCompatActivity.arguments(): T? =

@@ -36,7 +36,7 @@ class MoviesFragment : TMDBaseFragment<MoviesFragmentArgs>() {
         moviesRecyclerView.adapter = adapter
 
         arguments?.category?.let { viewModel.loadMovies(it) }
-        viewModel.viewStateLiveData.observe(this, Observer { it?.render(this) })
+        viewModel.viewStateLiveData.observe(viewLifecycleOwner, Observer { it?.render(this) })
     }
 
 }

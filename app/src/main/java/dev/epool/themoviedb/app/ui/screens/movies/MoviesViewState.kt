@@ -15,7 +15,6 @@ sealed class MoviesViewState {
         override fun render(fragment: MoviesFragment) = with(fragment) {
             progressBar.isVisible = isLoading
         }
-
     }
 
     data class Success(private val movies: List<UiMovie>) : MoviesViewState() {
@@ -23,7 +22,6 @@ sealed class MoviesViewState {
         override fun render(fragment: MoviesFragment) = with(fragment) {
             adapter.setMovies(movies)
         }
-
     }
 
     data class Error(private val throwable: Throwable) : MoviesViewState() {
@@ -34,7 +32,6 @@ sealed class MoviesViewState {
             }
             progressBar.isVisible = false
         }
-
     }
 
 }

@@ -55,7 +55,7 @@ class HomeActivity : TMDBaseActivity<HomeActivityArgs>() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         outState?.putString(FRAGMENT_TAG_KEY, lastShownFragmentTag)
         super.onSaveInstanceState(outState)
     }
